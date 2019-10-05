@@ -34,14 +34,31 @@ To make my news reading more fun
 
 Technical Approach:
 -----
+```
+NewsItem is a single news item - it has a title and a url
 
+Headlines gets the json returned from the Guardian api and creates an array of NewsItems.
 
+HeadlinesView is instantiated with a Headlines object and extracts each NewsItem (title and url) and wraps it in html so that they appear as a list on the screen.
+
+NewsItemSummary is instantiated with a news item and uses an api call (Aylien) to get the summary text for the news NewsItem
+
+SummaryView is instatiated with a NewsItemSummary and wraps the text in html to display on the page
+
+*** Controllers ***
+
+headline-controller creates an instance of the Headlines object and then a HeadlinesView object and displays title and url for each of the headines on the screen.
+
+summary-controller is called by the headline-controller if a url is clicked on the main page.  It creates a NewsItemSummary and SummaryView for the NewsItem that has been selected and renders them to the pages.
+
+item-controller is called by the headline or summary controller if the 'full article' link is selected.  It makes an api call to retrieve the entire article???
+
+```
 
 Notes on functionality (once all user stories are implemented):
 ------
 
 ## Domain model
-
 
 **Access Page and show Notes**
 ```sequence {theme="hand"}
